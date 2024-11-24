@@ -1,0 +1,28 @@
+-- BMI SQL
+
+-- Create BMI table
+CREATE TABLE BMI(
+    ID CHAR(3) PRIMARY KEY,
+    FIRST_NAME VARCHAR(20),
+    LAST_NAME VARCHAR(20),
+    AGE INT,
+    HEIGHT FLOAT,
+    WEIGHT FLOAT,
+);
+
+-- Insert data into BMI table
+INSERT INTO BMI VALUES('102','David','Senior',33,1.75,70);
+INSERT INTO BMI VALUES('103','June','Arbough',25,1.65,60);
+INSERT INTO BMI VALUES('104','Anne','Ramoras',34,1.70,65);
+INSERT INTO BMI VALUES('105','Alice','Johnson',28,1.60,55);
+
+-- List table attributes
+SELECT COLUMN_NAME, DATA_TYPE
+FROM INFORMATION_SCHEMA.COLUMNS
+WHERE TABLE_NAME = 'BMI';
+
+-- List data in BMI table
+SELECT * FROM BMI;
+
+-- Drop BMI table
+DROP TABLE BMI;
