@@ -1,11 +1,13 @@
 -- MULTIPLE TABLE QUERY
 
--- TASK 1
+-- TASK 1: For each assignment, list the assignment number,
+-- date, employee's first name, and last name
 SELECT ASSIGN_NUM, ASSIGN_DATE, FIRST_NAME, LAST_NAME
 FROM ASSIGNMENT_3NF, EMPLOYEE_3NF
 WHERE ASSIGNMENT_3NF.EMP_NUM = EMPLOYEE_3NF.EMP_NUM;
 
--- TASK 2
+-- TASK 2: List the assignment number, project name, 
+-- and employee's last name for all assignments
 SELECT ASSIGN_NUM, PROJ_NAME, LAST_NAME
 FROM ASSIGNMENT_3NF, PROJECT_3NF, EMPLOYEE_3NF
 WHERE ASSIGNMENT_3NF.PROJ_NUM = PROJECT_3NF.PROJ_NUM
@@ -16,20 +18,22 @@ SELECT * FROM PROJECT_3NF;
 SELECT * FROM EMPLOYEE_3NF;
 SELECT * FROM JOB_3NF;
 
--- TASK 3
+-- TASK 3: Find the assignment number, job description, 
+-- and employee first & last name for all employees with a job code of '501' or '502'.
 SELECT ASSIGN_NUM, JOB_DESCRIPTION, FIRST_NAME, LAST_NAME
 FROM ASSIGNMENT_3NF, JOB_3NF, EMPLOYEE_3NF
 WHERE ASSIGNMENT_3NF.EMP_NUM = EMPLOYEE_3NF.EMP_NUM
 AND EMPLOYEE_3NF.JOB_CODE = JOB_3NF.JOB_CODE
 AND JOB_3NF.JOB_CODE IN('501','502');
 
--- TASK 4
+-- TASK 4: List the project number, project name, and total hours worked on each project. 
 SELECT A.PROJ_NUM, PROJ_NAME, SUM(ASSIGN_HOURS) AS TOTAL_HOURS
 FROM ASSIGNMENT_3NF A, PROJECT_3NF P
 WHERE A.PROJ_NUM = P.PROJ_NUM
 GROUP BY A.PROJ_NUM, P.PROJ_NAME;
 
--- TASK 5
+-- TASK 5: List the employee number, last name, job description, 
+-- and total charge for each employee whose total charge exceeds $500.
 SELECT E.EMP_NUM, E.FIRST_NAME, E.LAST_NAME, J.JOB_DESCRIPTION, SUM(A.ASSIGN_CHARGE) AS TOTAL_CHARGE
 FROM ASSIGNMENT_3NF A, EMPLOYEE_3NF E, JOB_3NF J
 WHERE A.EMP_NUM = E.EMP_NUM
