@@ -1,11 +1,15 @@
--- TASK 1
+-- EXERCISE 3
+
+-- TASK 1: Find the assignment number, date, 
+-- and project number of each assignment worked on by 
+-- employees whose employee number begins with '10'.
 SELECT ASSIGN_NUM, ASSIGN_DATE, PROJ_NUM 
 FROM ASSIGNMENT_3NF
 WHERE EMP_NUM LIKE '10%';
 
 SELECT * FROM ASSIGNMENT_3NF;
 
--- TASK 2
+-- TASK 2: List all details about all assignments. Order the output by ASSIGN_DATE.
 SELECT *
 FROM ASSIGNMENT_3NF
 ORDER BY ASSIGN_DATE;
@@ -19,12 +23,13 @@ FROM ASSIGNMENT_3NF
 ORDER BY ASSIGN_CHARGE DESC;
 
 
--- TASK 3
+-- TASK 3: Find the number of assignments with charges greater than $200.
 SELECT COUNT(*)
 FROM ASSIGNMENT_3NF
 WHERE ASSIGN_CHARGE > 200;
 
--- TASK 4
+-- TASK 4: List the ASSIGN_NUM, ASSIGN_HOURS, and ASSIGN_CHARGE 
+-- for assignments that exceed the average ASSIGN_HOURS worked. 
 SELECT ASSIGN_NUM, ASSIGN_HOURS, ASSIGN_CHARGE
 FROM ASSIGNMENT_3NF
 WHERE ASSIGN_HOURS > (SELECT AVG(ASSIGN_HOURS) FROM ASSIGNMENT_3NF);
@@ -32,7 +37,7 @@ WHERE ASSIGN_HOURS > (SELECT AVG(ASSIGN_HOURS) FROM ASSIGNMENT_3NF);
 SELECT AVG(ASSIGN_HOURS) AS AVG_ASSIGN_HOURS
 FROM ASSIGNMENT_3NF;
 
--- TASK 5
+-- TASK 5: List the total charge for all assignments on '3/6/2022'.
 SELECT SUM(ASSIGN_CHARGE)
 FROM ASSIGNMENT_3NF
 WHERE ASSIGN_DATE = '2022-03-06';
